@@ -4,7 +4,7 @@ const handler = async (m, { conn }) => {
 
     const medias = [];
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
       const res = await axios.get('https://anime-xi-wheat.vercel.app/api/anime');
       const imageUrl = res.data?.image;
 
