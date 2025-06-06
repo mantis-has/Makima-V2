@@ -175,8 +175,8 @@ pm2 logs
 ---
 
 ### **`🌟 Colaboradores`**
-<a href="https://github.com/Deylin-Eliac/kirito-Bot-MD/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-Bot-MD" /> 
+<a href="https://github.com/Deylin-Eliac/kirito-bot-MD/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD" /> 
 </a>
 
 ---
