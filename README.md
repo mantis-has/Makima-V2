@@ -1,6 +1,6 @@
 <h1 align="center">✰ 𝐤𝐢𝐫𝐢𝐭𝐨 𝐁𝐨𝐭 𝐌𝐃 ✰</h1>
 </h1><p align="center">
-  <img src="https://files.catbox.moe/i9m71s.jpg" alt="Kirito Logo" width="100" height="100" />
+  <img src="https://files.catbox.moe/i9m71s.jpg"
 </p>
 
 ---
