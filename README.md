@@ -1,34 +1,32 @@
-<h1 align="center">✰ 𝐤𝐢𝐫𝐢𝐭𝐨 𝐁𝐨𝐭 𝐌𝐃 ✰</h1>
+
+<h1 align="center">✰ Kirito Bot MD ✰</h1>
 
 ---
 
-</h1><p align="center">
-  <img src="https://files.catbox.moe/hnif5j.jpg"
+<p align="center">
+  <img src="https://files.catbox.moe/hnif5j.jpg" alt="Kirito Bot MD Logo">
 </p>
 
 ---
 
-# 🏆 Poder y Precisión en un Solo Bot
+# *Acerca de Kirito Bot MD*
 
-> 👨‍💻 Desarrollado por: Deylin Eliac
+> Un bot de WhatsApp potente y versátil, inspirado en el universo de Sword Art Online. Desarrollado para ofrecer una experiencia ágil, segura y funcional.
 
-> 💬 Optimizado para WhatsApp
-
-> ⚔️ Inspirado en Sword Art Online
-
-> 🚀 Ágil, funcional y seguro
-
-
+*   *Desarrollador:* Deylin Eliac
+*   *Plataforma:* WhatsApp
+*   *Inspiración:* Sword Art Online
+*   *Características Clave:* Agilidad, Funcionalidad, Seguridad
 
 ---
 
+## *Licencia*
 
-## 📄 Licencia
-Este proyecto está licenciado bajo los términos de la [Licencia Pública General GNU Affero v3](./LICENSE).
+Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./LICENSE).
 
 ---
 
-# 🚀 Explora Kirito-Bot
+# *Explora Kirito Bot MD*
 
 <p align="center">
   <img src="https://files.catbox.moe/91wohc.jpg" alt="Kirito Showcase" width="130" height="130" />
@@ -36,47 +34,51 @@ Este proyecto está licenciado bajo los términos de la [Licencia Pública Gener
 
 ---
 
-# ⚔️ Instalación Rápida en Termux
+# *Instalación en Termux*
 
 <details>
- <summary><b>🔧 Ver pasos de instalación</b></summary>Paso a paso
+  <summary><b>*Guía de Instalación Paso a Paso*</b></summary>
 
-termux-setup-storage
-pkg update -y && pkg upgrade -y
-pkg install git nodejs ffmpeg imagemagick yarn -y
-git clone https://github.com/Deylin-Eliac/Kirito-Bot-MD
-cd Kirito-Bot-MD
-yarn install
-yarn start
+  1.  `termux-setup-storage`
+  2.  `pkg update -y && pkg upgrade -y`
+  3.  `pkg install git nodejs ffmpeg imagemagick yarn -y`
+  4.  `git clone https://github.com/Deylin-Eliac/Kirito-Bot-MD`
+  5.  `cd Kirito-Bot-MD`
+  6.  `yarn install`
+  7.  `yarn start`
 
-📌 Nota: Si ves letras rojas al escanear el código QR, es completamente normal.
+  *Nota:* Los errores en rojo durante el escaneo del código QR son normales.
 
-Reiniciar el bot después de cerrarlo:
+  *Reiniciar el bot:*
 
-cd Kirito-Bot-MD
-yarn start
+  ```bash
+  cd Kirito-Bot-MD
+  yarn start
+  ```
 
-Escanear un nuevo código QR:
+  *Escanear un nuevo código QR:*
 
-cd Kirito-Bot-MD
-rm -rf kiritoSession
-yarn start
+  ```bash
+  cd Kirito-Bot-MD
+  rm -rf kiritoSession
+  yarn start
+  ```
 
-Mantener el bot activo incluso si cierras Termux:
+  *Mantener el bot activo en segundo plano:*
 
-npm i -g pm2
-pm2 start index.js
-pm2 save
-pm2 logs
-
+  ```bash
+  npm i -g pm2
+  pm2 start index.js
+  pm2 save
+  pm2 logs
+  ```
 </details>
 
 ---
 
-# 🌐 Comunidad Oficial
+# *Comunidad*
 
-💬 Canal Oficial de WhatsApp: [Haz clic aquí 👑](https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m)
-
+*   *Canal Oficial de WhatsApp:* [Únete aquí 👑](https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m)
 
 ---
 
@@ -86,13 +88,12 @@ pm2 logs
 
 ---
 
-# 📊 Estadísticas
+# *Estadísticas del Proyecto*
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Deylin-Eliac&repo=Kirito-Bot-MD&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Deylin-Eliac&theme=radical&hide_border=true" alt="GitHub Streak">
 </p>
-
 
 <p align="center">
   <a href="https://github.com/Deylin-Eliac">
@@ -105,17 +106,18 @@ pm2 logs
     <img src="https://img.shields.io/badge/Email-Enviar%20correo-EA4335?style=for-the-badge&logo=gmail">
   </a>
 </p>
+
 ---
 
-# 🌟 Colaboradores
+# *Colaboradores*
 
 <a href="https://github.com/Deylin-Eliac/kirito-bot-MD/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD" />
+  <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD" alt="Contributors"/>
 </a>
 
 ---
 
-# 👑 Autor y Propietario
+# *Autor*
 
 <p align="center">
   <a href="https://github.com/Deylin-Eliac">
@@ -125,7 +127,7 @@ pm2 logs
 
 ---
 
-# 🪐 Agradecimientos 
+# *Agradecimientos*
 
 <a href="https://github.com/The-King-Destroy">
   <img src="https://github.com/The-King-Destroy.png" width="130" height="130" alt="Destroy"/>
@@ -133,21 +135,18 @@ pm2 logs
 
 ---
 
-
-
-# 💰 Apoya el Proyecto
+# *Apoya el Proyecto*
 
 <p align="center">
   <a href="https://www.paypal.me/kirito98Dey">
-    <img src="https://img.shields.io/badge/Apoya%20en%20PayPal-000000?style=for-the-badge&logo=paypal&logoColor=white" />
+    <img src="https://img.shields.io/badge/Apoya%20en%20PayPal-000000?style=for-the-badge&logo=paypal&logoColor=white" alt="PayPal Donate"/>
   </a>
 </p>
 
 ---
 
-# ⚔️ Powered by Deylin 👑
+# *Desarrollado por Deylin 👑*
 
 <p align="center">
-  <a href="https://wa.me/50433191934">Click para contactar por WhatsApp</a>
+  <a href="https://wa.me/50433191934">*Click para contactar por WhatsApp*</a>
 </p>
-
