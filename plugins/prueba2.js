@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const handler = async (m, { conn }) => {
   try {
     m.react?.('🎌');
@@ -11,12 +13,29 @@ const handler = async (m, { conn }) => {
       if (imageUrl) {
         medias.push({
           type: 'image',
-          data: { url: imageUrl }
+          url: imageUrl
         });
       }
     }
 
-    
+    if (medias.length > 0) {
+      // Usa tu método personalizado si tienes uno
+      if (typeof conn.sendAlbumMessage === 'function') {
+        await conn.sendAlbumMessage(m.chat, medias, m);
+      } else {
+        // Fallback: enviar como imágenes individuales
+        for (const media of medias) {
+          await conn.sendMessage(m.chat, { image: { url: media.url } }, { quoted: m });
+        }
+      }
+    } else {
+      await m.reply('No se pudo obtener imagen.');
+    }
+  } catch (e) {
+    console.error(e);
+    await m.reply('Ocurrió un error al obtener la imagen.');
+  }
+};
 
 handler.command = ['an'];
 handler.help = ['an'];
