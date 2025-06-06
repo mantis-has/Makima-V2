@@ -1,40 +1,40 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
+import baileys from '@whiskeysockets/baileys';
+
+// Se asume que ya tienes la función sendAlbumMessage definida como en tu ejemplo anterior
 
 const handler = async (m, { conn }) => {
   try {
-    const images = [];
+    m.react?.('🎌');
 
-    // Recolectar 10 URLs de imágenes
+    const medias = [];
+
     for (let i = 0; i < 10; i++) {
-      const res = await fetch('https://anime-xi-wheat.vercel.app/api/anime');
-      const json = await res.json();
-      if (json.image) {
-        images.push(json.image);
+      const res = await axios.get('https://anime-xi-wheat.vercel.app/api/anime');
+      const imageUrl = res.data?.image;
+
+      if (imageUrl) {
+        medias.push({
+          type: 'image',
+          data: { url: imageUrl }
+        });
       }
     }
 
-    if (images.length === 0) {
-      return await m.reply('No se pudieron obtener imágenes.');
+    if (medias.length < 2) {
+      return m.reply('No se obtuvieron suficientes imágenes para el álbum.');
     }
 
-    // Enviar imágenes una por una
-    for (let i = 0; i < images.length; i++) {
-      await conn.sendMessage(
-        m.chat,
-        {
-          image: { url: images[i] },
-          caption: `📸 Imagen ${i + 1} de 10`,
-        },
-        { quoted: m }
-      );
-    }
+    await sendAlbumMessage(m.chat, medias, {
+      caption: '✨ Álbum de imágenes anime',
+      quoted: m
+    });
+
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
+
   } catch (error) {
     console.error(error);
-    await conn.sendMessage(
-      m.chat,
-      { text: 'Lo siento, no se pudo obtener ni enviar las imágenes.' },
-      { quoted: m }
-    );
+    await conn.sendMessage(m.chat, { text: '❌ Error al enviar el álbum de anime.', quoted: m });
   }
 };
 
