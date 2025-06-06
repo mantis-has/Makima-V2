@@ -46,7 +46,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   } finally {
     if (stiker) {
       
-      return conn.sendFile(m.chat, stiker, 'sticker.webp', '', rcanal, true, {
+      return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, true, {
         contextInfo: {
           forwardingScore: 200,
           isForwarded: false,
