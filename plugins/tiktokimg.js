@@ -1,7 +1,7 @@
 const handler = async (m, { conn, isPremium, isAdult }) => {
   try {
     // Verifica si el contenido NSFW está permitido
-    if (!isAdult && !isPremium) {
+   // if (!isAdult && !isPremium) {
       return m.reply('❌ Este comando es solo para usuarios premium o en chats habilitados para NSFW.');
     }
 
