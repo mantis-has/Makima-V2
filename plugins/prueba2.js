@@ -1,8 +1,3 @@
-import axios from 'axios';
-import baileys from '@whiskeysockets/baileys';
-
-// Se asume que ya tienes la función sendAlbumMessage definida como en tu ejemplo anterior
-
 const handler = async (m, { conn }) => {
   try {
     m.react?.('🎌');
@@ -25,7 +20,7 @@ const handler = async (m, { conn }) => {
       return m.reply('No se obtuvieron suficientes imágenes para el álbum.');
     }
 
-    await sendAlbumMessage(m.chat, medias, {
+    await sendAlbumMessage(conn, m.chat, medias, {
       caption: '✨ Álbum de imágenes anime',
       quoted: m
     });
