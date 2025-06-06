@@ -21,10 +21,8 @@
 ---
 
 
-# 📄 Licencia
-
-Este repositorio está bajo los términos de la Licencia Pública General GNU Affero v3.
-
+## 📄 Licencia
+Este proyecto está licenciado bajo los términos de la [Licencia Pública General GNU Affero v3](./LICENSE).
 
 ---
 
