@@ -7,18 +7,19 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   let stiker = false
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ''
-  let option = args[0] || ''
+  let option = args.find(a => ['-c', '-p', '-x'].includes(a)) || ''
 
-  // Detectar opciones desde el comando directo
-  switch (command) {
-    case 's-c': option = '-c'; break
-    case 's-p': option = '-p'; break
-    case 's-x': option = '-x'; break
+  if (!option) {
+    switch (command) {
+      case 's-c': option = '-c'; break
+      case 's-p': option = '-p'; break
+      case 's-x': option = '-x'; break
+    }
   }
 
   try {
-    if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime) && (q.msg || q).seconds > 8)
+    if ((/webp|image|video/.test(mime)) || q.mediaType === 'sticker') {
+      if (/video/.test(mime) && (q.msg || q).seconds > 8)
         return m.reply(`${emoji} *¡El video no puede durar más de 8 segundos!*`)
 
       let img = await q.download?.()
@@ -32,10 +33,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         console.error(e)
       } finally {
         if (!stiker) {
-          if (/webp/g.test(mime)) out = await webp2png(img)
-          else if (/image/g.test(mime)) out = await uploadImage(img)
-          else if (/video/g.test(mime)) out = await uploadFile(img)
-          if (typeof out !== 'string') out = await uploadImage(img)
+          if (/webp/.test(mime)) out = await webp2png(img)
+          else if (/image/.test(mime)) out = await uploadImage(img)
+          else if (/video/.test(mime)) out = await uploadFile(img)
+          if (!out || typeof out !== 'string') out = await uploadImage(img)
           stiker = await sticker(false, out, global.packsticker, global.author, option)
         }
       }
