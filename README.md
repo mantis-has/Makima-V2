@@ -111,11 +111,11 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 
 # *Autor y desarrollador*
 
-<p align="center">
-  <a href="https://github.com/Deylin-Eliac">
-    <img src="https://github.com/Deylin-Eliac.png" width="130" height="130" alt="Deylin"/>
-  </a>
-</p>
+
+<a href="https://github.com/deylin-eliac">
+  <img src="https://github.com/deylin-eliac.png" width="130" height="130" alt="Deylin-eliac"/>
+</a>
+
 
 ---
 
