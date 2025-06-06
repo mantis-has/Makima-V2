@@ -109,7 +109,7 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 
 ---
 
-# *Autor*
+# *Autor y desarrollador*
 
 <p align="center">
   <a href="https://github.com/Deylin-Eliac">
