@@ -7,15 +7,22 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   let stiker = false
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ''
-  let option = args[0] || '' // Opción como -c, -x, -p, normal
+  let option = args[0] || ''
+
+  // Detectar opciones desde el comando directo
+  switch (command) {
+    case 's-c': option = '-c'; break
+    case 's-p': option = '-p'; break
+    case 's-x': option = '-x'; break
+  }
 
   try {
     if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime) && (q.msg || q).seconds > 8) 
+      if (/video/g.test(mime) && (q.msg || q).seconds > 8)
         return m.reply(`${emoji} *¡El video no puede durar más de 8 segundos!*`)
-      
+
       let img = await q.download?.()
-      if (!img) 
+      if (!img)
         return conn.reply(m.chat, `${emoji} *_La conversión ha fallado. Intenta responder a una imagen/video/gif con el comando._*`, m, rcanal)
 
       let out
@@ -63,11 +70,18 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
   }
 }
-handler.help = ['s <opciones>', 'sticker <url>']
+
+handler.help = [
+  's', 
+  's -c / s-c (sticker circular)', 
+  's -p / s-p (sticker pequeño)', 
+  's -x / s-x (sticker con efecto)',
+  'sticker <url>'
+]
 handler.tags = ['sticker']
 handler.group = false
 handler.register = true
-handler.command = ['s', 'sticker', 'stiker']
+handler.command = ['s', 'sticker', 'stiker', 's-c', 's-p', 's-x']
 
 export default handler
 
