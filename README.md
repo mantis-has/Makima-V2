@@ -75,7 +75,7 @@ pm2 logs
 
 # 🌐 Comunidad Oficial
 
-💬 Canal Oficial de WhatsApp: Haz clic aquí 👑
+💬 Canal Oficial de WhatsApp: [Haz clic aquí 👑](https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m)
 
 
 ---
@@ -93,6 +93,18 @@ pm2 logs
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Deylin-Eliac&theme=radical&hide_border=true" alt="GitHub Streak">
 </p>
 
+
+<p align="center">
+  <a href="https://github.com/Deylin-Eliac">
+    <img src="https://img.shields.io/badge/GitHub-Deylin-181717?style=for-the-badge&logo=github">
+  </a>
+  <a href="https://wa.me/50433191934">
+    <img src="https://img.shields.io/badge/WhatsApp-Contactar-25D366?style=for-the-badge&logo=whatsapp">
+  </a>
+  <a href="mailto:deylibaquedano801@gmail.com">
+    <img src="https://img.shields.io/badge/Email-Enviar%20correo-EA4335?style=for-the-badge&logo=gmail">
+  </a>
+</p>
 ---
 
 # 🌟 Colaboradores
@@ -118,23 +130,10 @@ pm2 logs
 <a href="https://github.com/The-King-Destroy">
   <img src="https://github.com/The-King-Destroy.png" width="130" height="130" alt="Destroy"/>
 </a>
----
-
-# 📬 Contáctame
-
-<p align="center">
-  <a href="https://github.com/Deylin-Eliac">
-    <img src="https://img.shields.io/badge/GitHub-Deylin-181717?style=for-the-badge&logo=github">
-  </a>
-  <a href="https://wa.me/50433191934">
-    <img src="https://img.shields.io/badge/WhatsApp-Contactar-25D366?style=for-the-badge&logo=whatsapp">
-  </a>
-  <a href="mailto:deylibaquedano801@gmail.com">
-    <img src="https://img.shields.io/badge/Email-Enviar%20correo-EA4335?style=for-the-badge&logo=gmail">
-  </a>
-</p>
 
 ---
+
+
 
 # 💰 Apoya el Proyecto
 
