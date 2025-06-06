@@ -26,13 +26,6 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 
 ---
 
-# *Explora Kirito Bot MD*
-
-<p align="center">
-  <img src="https://files.catbox.moe/91wohc.jpg" alt="Kirito Showcase" width="130" height="130" />
-</p>
-
----
 
 # *Instalación en Termux*
 
@@ -112,7 +105,7 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 # *Colaboradores*
 
 <a href="https://github.com/Deylin-Eliac/kirito-bot-MD/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD" alt="Contributors"/>
+  <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD//" alt="Contributors"/>
 </a>
 
 ---
@@ -132,21 +125,3 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 <a href="https://github.com/The-King-Destroy">
   <img src="https://github.com/The-King-Destroy.png" width="130" height="130" alt="Destroy"/>
 </a>
-
----
-
-# *Apoya el Proyecto*
-
-<p align="center">
-  <a href="https://www.paypal.me/kirito98Dey">
-    <img src="https://img.shields.io/badge/Apoya%20en%20PayPal-000000?style=for-the-badge&logo=paypal&logoColor=white" alt="PayPal Donate"/>
-  </a>
-</p>
-
----
-
-# *Desarrollado por Deylin 👑*
-
-<p align="center">
-  <a href="https://wa.me/50433191934">*Click para contactar por WhatsApp*</a>
-</p>
