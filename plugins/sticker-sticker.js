@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     if (/webp|image|video/g.test(mime)) {
       if (/video/g.test(mime) && (q.msg || q).seconds > 15) {
-        return m.reply(`${emoji} ¡El video no puede durar más de 15 segundos!`, m, rcanal)
+        return m.reply(`${emoji} ¡El video no puede durar más de 15 segundos!...`)
       }
 
       let img = await q.download?.()
@@ -40,29 +40,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       if (isUrl(args[0])) {
         stiker = await sticker(false, args[0], global.packsticker, global.packsticker2)
       } else {
-        return m.reply(`${emoji} El URL es incorrecto.`, m, rcanal)
+        return m.reply(`⚠️ El URL es incorrecto...`)
       }
     }
-  } catch (e) {
-    console.error(e)
   } finally {
     if (stiker) {
-      return conn.sendFile(m.chat, stiker, 'sticker.webp', '', rcanal, true, {
-        contextInfo: {
-          forwardingScore: 200,
-          isForwarded: false,
-          externalAdReply: {
-            showAdAttribution: false,
-            title: '𝑪𝒓𝒆𝒂𝒅𝒐 𝒑𝒐𝒓 𝑲𝒊𝒓𝒊𝒕𝒐 𝑩𝒐𝒕 𝑴𝑫',
-            body: `𝑲𝒊𝒓𝒊𝒕𝒐 𝑩𝒐𝒕 𝑴𝑫 ${emoji}`,
-            mediaType: 2,
-            sourceUrl: grupo,
-            thumbnail: icons
-          }
-        }
-      })
+      conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, rcanal)
     } else {
-      return conn.reply(m.chat, `${emoji} Por favor, responde a una imagen, video o gif para crear un sticker.`, m, rcanal)
+      return conn.reply(m.chat, `⚠️ Por favor, envía una imagen o video para hacer un sticker.`, m, rcanal)
     }
   }
 }
