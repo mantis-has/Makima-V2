@@ -1,42 +1,50 @@
 import { sticker } from '../lib/sticker.js'
+import uploadFile from '../lib/uploadFile.js'
+import uploadImage from '../lib/uploadImage.js'
+import { webp2png } from '../lib/webp2mp4.js'
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+let handler = async (m, { conn, args, usedPrefix, command, emoji, rcanal }) => {
   let stiker = false
   try {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
+
     if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime)) {
-        if ((q.msg || q).seconds > 10) return m.reply(`${emoji} El vídeo debe durar menos de *10 segundos*`, m, rcanal)
+      if (/video/g.test(mime) && (q.msg || q).seconds > 15) {
+        return m.reply(`${emoji} ¡El video no puede durar más de 15 segundos!`, m, rcanal)
       }
 
       let img = await q.download?.()
-      if (!img) return conn.reply(m.chat, `${emoji} Por favor, envía un vídeo o imagen para crear el sticker.`, m, rcanal)
+      if (!img) {
+        return conn.reply(m.chat, `${emoji} Por favor, envía una imagen o video para hacer un sticker.`, m, rcanal)
+      }
 
       let out
       try {
-        stiker = await sticker(img, false, global.authsticker, global.packsticker)
-      } catch (e) {
-        console.error(e)
+        let userId = m.sender
+        let packstickers = global.db.data.users[userId] || {}
+        let texto1 = packstickers.text1 || global.packsticker
+        let texto2 = packstickers.text2 || global.packsticker2
+
+        stiker = await sticker(img, false, texto1, texto2)
       } finally {
         if (!stiker) {
           if (/webp/g.test(mime)) out = await webp2png(img)
           else if (/image/g.test(mime)) out = await uploadImage(img)
           else if (/video/g.test(mime)) out = await uploadFile(img)
           if (typeof out !== 'string') out = await uploadImage(img)
-          stiker = await sticker(false, out, global.packsticker, global.authsticker)
+          stiker = await sticker(false, out, global.packsticker, global.packsticker2)
         }
       }
     } else if (args[0]) {
       if (isUrl(args[0])) {
-        stiker = await sticker(false, args[0], global.packsticker, global.authsticker)
+        stiker = await sticker(false, args[0], global.packsticker, global.packsticker2)
       } else {
-        return m.reply(`${emoji} El URL es incorrecto`, m, rcanal)
+        return m.reply(`${emoji} El URL es incorrecto.`, m, rcanal)
       }
     }
   } catch (e) {
     console.error(e)
-    if (!stiker) stiker = e
   } finally {
     if (stiker) {
       return conn.sendFile(m.chat, stiker, 'sticker.webp', '', rcanal, true, {
@@ -54,7 +62,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         }
       })
     } else {
-      return conn.reply(m.chat, `${emoji} 𝙍𝙚𝙨𝙥𝙤𝙣𝙙𝙚 𝙖 𝙪𝙣𝙖 𝙞𝙢𝙖𝙜𝙚𝙣/𝙫𝙞́𝙙𝙚𝙤/𝙜𝙞𝙛 𝙥𝙖𝙧𝙖 𝙘𝙧𝙚𝙖𝙧 𝙩𝙪 𝙨𝙩𝙞𝙘𝙠𝙚𝙧.`, m, rcanal)
+      return conn.reply(m.chat, `${emoji} Por favor, responde a una imagen, video o gif para crear un sticker.`, m, rcanal)
     }
   }
 }
@@ -62,11 +70,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['stiker <img>', 'sticker <url>']
 handler.tags = ['sticker']
 handler.command = ['s', 'sticker', 'stiker']
-handler.estrellas = 3
 
 export default handler
 
-// Función para validar si el texto es una URL válida de imagen
 const isUrl = (text) => {
   return text.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)(jpe?g|gif|png)/, 'gi'))
 }
