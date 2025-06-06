@@ -25,7 +25,7 @@ const handler = async (m, { conn }) => {
   }
 };
 
-handler.command = [''];
+handler.command = ['an'];
 handler.help = [''];
 handler.tags = ['an'];
 
