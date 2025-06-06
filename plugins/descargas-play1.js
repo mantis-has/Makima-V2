@@ -88,7 +88,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 > ◆ ▬▬▬▬▬▬ ❴✪❵ ▬▬▬▬▬▬ ◆
 *✰ Vistas:* ${vistas}
 > ◆ ▬▬▬▬▬▬ ❴✪❵ ▬▬▬▬▬▬ ◆
-*✰ Canal:* ${videoInfo.author.name || "Desconocido"}
+*✰ Canal:* ${(videoInfo.author?.name) || "Desconocido"}
 > ◆ ▬▬▬▬▬▬ ❴✪❵ ▬▬▬▬▬▬ ◆
 *✰ Publicado:* ${ago}
 > ◆ ▬▬▬▬▬▬ ❴✪❵ ▬▬▬▬▬▬ ◆
