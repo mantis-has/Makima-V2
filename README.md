@@ -77,11 +77,7 @@ href="https://www.mediafire.com/file/3hsvi3xkpq3a64o/termux_118.a"><img src="htt
 
 ---
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=400&color=00CCFF&lines=✨+Disfruta+del+proyecto;💙+Creado+con+dedicación;⚔️+By+Deylin+🌠🚀" alt="Typing SVG">
-</p>
 
----
 
 # *Estadísticas del Proyecto*
 
