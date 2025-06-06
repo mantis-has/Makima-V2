@@ -1,6 +1,6 @@
 const handler = async (m, { conn }) => {
   try {
-    const res = await fetch('https://api.fgmods.xyz/api/nsfw-nime/pussy?apikey=fg_ZIKajBcu');
+    const res = await fetch('https://api.fgmods.xyz/api/nsfw-nime/pussy?apikey=fg_W2J7QedE');
     if (!res.ok) throw 'Error en la API';
     const json = await res.json();
     if (!json.result) throw 'No se encontró imagen.';
