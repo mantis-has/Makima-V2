@@ -45,7 +45,21 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
   } finally {
     if (stiker) {
-      conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, rcanal)
+      
+      return conn.sendFile(m.chat, stiker, 'sticker.webp', '', rcanal, true, {
+        contextInfo: {
+          forwardingScore: 200,
+          isForwarded: false,
+          externalAdReply: {
+            showAdAttribution: false,
+            title: '𝑪𝒓𝒆𝒂𝒅𝒐 𝒑𝒐𝒓 𝑲𝒊𝒓𝒊𝒕𝒐 𝑩𝒐𝒕 𝑴𝑫',
+            body: `𝑲𝒊𝒓𝒊𝒕𝒐 𝑩𝒐𝒕 𝑴𝑫 ${emoji}`,
+            mediaType: 2,
+            sourceUrl: grupo,
+            thumbnail: icons
+          }
+        }
+      })
     } else {
       return conn.reply(m.chat, `⚠️ Por favor, envía una imagen o video para hacer un sticker.`, m, rcanal)
     }
