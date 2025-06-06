@@ -1,28 +1,24 @@
-const handler = async (m, { conn, isPremium, isAdult }) => {
+const handler = async (m, { conn, isAdult }) => {
   try {
-    // Verifica si el contenido NSFW está permitido
-   // if (!isAdult && !isPremium) {
-  //   return m.reply('❌ Este comando es solo para usuarios premium o en chats habilitados para NSFW.');
-    }
+    /*if (!isAdult) {
+      return m.reply('❌ Este comando solo está disponible en chats NSFW o para usuarios autorizados.');
+    }*/
 
     const res = await fetch('https://api.fgmods.xyz/api/nsfw-nime/pussy?apikey=fg_W2J7QedE');
-    if (!res.ok) throw new Error(`Error al conectar con la API: ${res.status}`);
+    if (!res.ok) throw new Error(`Error al obtener imagen: ${res.status}`);
 
-    const json = await res.json();
-    if (!json.result || typeof json.result !== 'string') {
-      throw new Error('La API no devolvió una imagen válida.');
-    }
+    const buffer = await res.buffer(); // Lee la imagen como buffer
 
-    await conn.sendFile(m.chat, json.result, 'nsfw.jpg', '🔞 Aquí tienes', m);
+    await conn.sendFile(m.chat, buffer, 'nsfw.jpg', '🔞 Aquí tienes', m);
   } catch (e) {
     console.error(e);
-    await m.reply('❌ Error al obtener la imagen NSFW. Intenta más tarde.');
+    await m.reply('❌ Error al obtener la imagen. Intenta de nuevo más tarde.');
   }
 };
 
 handler.help = ['pussy'];
 handler.tags = ['nsfw'];
 handler.command = ['pussy'];
-
+handler.nsfw = true;
 
 export default handler;
