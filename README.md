@@ -3,6 +3,7 @@
 </h1><p align="center">
   <img src="https://files.catbox.moe/i9m71s.jpg" alt="Kirito Logo" width="130" height="130" />
 </p>
+
 ---
 
 # 🏆 Poder y Precisión en un Solo Bot
@@ -19,6 +20,7 @@
 
 ---
 
+
 # 📄 Licencia
 
 Este repositorio está bajo los términos de la Licencia Pública General GNU Affero v3.
@@ -31,6 +33,7 @@ Este repositorio está bajo los términos de la Licencia Pública General GNU Af
 <p align="center">
   <img src="https://files.catbox.moe/91wohc.jpg" alt="Kirito Showcase" width="130" height="130" />
 </p>
+
 ---
 
 # ⚔️ Instalación Rápida en Termux
@@ -80,6 +83,7 @@ pm2 logs
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=400&color=00CCFF&lines=✨+Disfruta+del+proyecto;💙+Creado+con+dedicación;⚔️+By+Deylin+🌠🚀" alt="Typing SVG">
 </p>
+
 ---
 
 # 📊 Estadísticas
@@ -88,6 +92,7 @@ pm2 logs
   <img src="https://github-readme-stats.vercel.app/api?username=Deylin-Eliac&repo=Kirito-Bot-MD&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Deylin-Eliac&theme=radical&hide_border=true" alt="GitHub Streak">
 </p>
+
 ---
 
 # 🌟 Colaboradores
@@ -95,6 +100,7 @@ pm2 logs
 <a href="https://github.com/Deylin-Eliac/kirito-bot-MD/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD" />
 </a>
+
 ---
 
 # 👑 Autor y Propietario
@@ -104,6 +110,7 @@ pm2 logs
     <img src="https://github.com/Deylin-Eliac.png" width="130" height="130" alt="Deylin"/>
   </a>
 </p>
+
 ---
 
 # 🪐 Agradecimientos 
@@ -126,6 +133,7 @@ pm2 logs
     <img src="https://img.shields.io/badge/Email-Enviar%20correo-EA4335?style=for-the-badge&logo=gmail">
   </a>
 </p>
+
 ---
 
 # 💰 Apoya el Proyecto
@@ -135,6 +143,7 @@ pm2 logs
     <img src="https://img.shields.io/badge/Apoya%20en%20PayPal-000000?style=for-the-badge&logo=paypal&logoColor=white" />
   </a>
 </p>
+
 ---
 
 # ⚔️ Powered by Deylin 👑
