@@ -102,10 +102,9 @@ Este proyecto se distribuye bajo la [Licencia Pública General GNU Affero v3](./
 
 ---
 
-# *Colaboradores*
-
-<a href="https://github.com/Deylin-Eliac/kirito-bot-MD/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Deylin-Eliac/kirito-bot-MD//" alt="Contributors"/>
+### 🌟 DESARROLLADORES
+<a href="https://github.com/deylin-eliac/kirito-bot-MD/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=deylin-eliac/kirito-bot-MD" /> 
 </a>
 
 ---
