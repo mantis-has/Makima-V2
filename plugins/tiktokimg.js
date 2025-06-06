@@ -2,7 +2,7 @@ const handler = async (m, { conn, isPremium, isAdult }) => {
   try {
     // Verifica si el contenido NSFW está permitido
    // if (!isAdult && !isPremium) {
-      return m.reply('❌ Este comando es solo para usuarios premium o en chats habilitados para NSFW.');
+  //   return m.reply('❌ Este comando es solo para usuarios premium o en chats habilitados para NSFW.');
     }
 
     const res = await fetch('https://api.fgmods.xyz/api/nsfw-nime/pussy?apikey=fg_W2J7QedE');
