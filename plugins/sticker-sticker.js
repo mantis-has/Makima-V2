@@ -48,7 +48,7 @@ handler.help = ['stiker <img>', 'sticker <url>']
 handler.tags = ['sticker']
 handler.group = false;
 handler.register = true
-handler.command = ['ka', 'sticker', 'stiker']
+handler.command = ['s', 'sticker', 'stiker']
 
 export default handler
 
