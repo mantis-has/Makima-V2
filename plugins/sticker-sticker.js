@@ -1,52 +1,76 @@
 import { sticker } from '../lib/sticker.js'
-import uploadFile from '../lib/uploadFile.js'
-import uploadImage from '../lib/uploadImage.js'
-import { webp2png } from '../lib/webp2mp4.js'
+// Descomenta estas si las necesitas
+// import uploadFile from '../lib/uploadFile.js'
+// import uploadImage from '../lib/uploadImage.js'
+// import { webp2png } from '../lib/webp2mp4.js'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+  let stiker = false
+  try {
+    let q = m.quoted ? m.quoted : m
+    let mime = (q.msg || q).mimetype || q.mediaType || ''
 
-let stiker = false
-try {
-let q = m.quoted ? m.quoted : m
-let mime = (q.msg || q).mimetype || q.mediaType || ''
-if (/webp|image|video/g.test(mime)) {
-if (/video/g.test(mime)) if ((q.msg || q).seconds > 8) return m.reply(`${emoji} *¡El video no puede durar mas de 8 segundos!*`)
-let img = await q.download?.()
+    if (/webp|image|video/g.test(mime)) {
+      if (/video/g.test(mime) && (q.msg || q).seconds > 8) {
+        return m.reply(`${emoji} *¡El video no puede durar más de 8 segundos!*`)
+      }
 
-if (!img) return conn.reply(m.chat, `${emoji} *_La conversión ha fallado, intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m, rcanal)
+      let img = await q.download?.()
+      if (!img) return conn.reply(m.chat, `${emoji} *_La conversión ha fallado, intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m, rcanal)
 
-let out
-try {
-stiker = await sticker(img, false, global.packsticker, global.author)
-} catch (e) {
-console.error(e)
-} finally {
-if (!stiker) {
-if (/webp/g.test(mime)) out = await webp2png(img)
-else if (/image/g.test(mime)) out = await uploadImage(img)
-else if (/video/g.test(mime)) out = await uploadFile(img)
-if (typeof out !== 'string') out = await uploadImage(img)
-stiker = await sticker(false, out, global.packsticker, global.author)
-}}
-} else if (args[0]) {
-if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packsticker, global.author)
-
-else return m.reply(`${emoji} El url es incorrecto`)
-
+      let out
+      try {
+        stiker = await sticker(img, false, global.packsticker, global.author)
+      } catch (e) {
+        console.error('[Sticker Error Primario]', e)
+      } finally {
+        if (!stiker) {
+          if (/webp/g.test(mime)) {
+            if (typeof webp2png === 'function') out = await webp2png(img)
+          } else if (/image/g.test(mime)) {
+            if (typeof uploadImage === 'function') out = await uploadImage(img)
+          } else if (/video/g.test(mime)) {
+            if (typeof uploadFile === 'function') out = await uploadFile(img)
+          }
+          if (typeof out !== 'string' && typeof uploadImage === 'function') out = await uploadImage(img)
+          stiker = await sticker(false, out, global.packsticker, global.author)
+        }
+      }
+    } else if (args[0]) {
+      if (isUrl(args[0])) {
+        stiker = await sticker(false, args[0], global.packsticker, global.author)
+      } else {
+        return m.reply(`${emoji} El URL es incorrecto`)
+      }
+    }
+  } catch (e) {
+    console.error('[Sticker Error General]', e)
+    if (!stiker) stiker = e
+  } finally {
+    if (stiker instanceof Buffer) {
+      return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, true, {
+        contextInfo: {
+          forwardingScore: 200,
+          isForwarded: false,
+          externalAdReply: {
+            showAdAttribution: false,
+            title: global.packname,
+            body: `𝐊𝐢𝐫𝐢𝐭𝐨-𝐁𝐨𝐭 𝐌𝐃✰⃔`,
+            mediaType: 2,
+            sourceUrl: global.redes,
+            thumbnail: global.icons
+          }
+        }
+      }, { quoted: m })
+    } else {
+      return conn.reply(m.chat, `${emoji} *_La conversión ha fallado, intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m, rcanal)
+    }
+  }
 }
-} catch (e) {
-console.error(e)
-if (!stiker) stiker = e
-} finally {
-if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: packname, body: `𝐊𝐢𝐫𝐢𝐭𝐨-𝐁𝐨𝐭 𝐌𝐃✰⃔`, mediaType: 2, sourceUrl: redes, thumbnail: icons}}}, { quoted: m })
 
-else return conn.reply(m.chat, '${emoji} *_La conversión ha fallado, intenta enviar primero imagen/video/gif y luego responde con el comando._*', m, rcanal)
-
-
-}}
 handler.help = ['stiker <img>', 'sticker <url>']
 handler.tags = ['sticker']
-handler.group = false;
+handler.group = false
 handler.register = true
 handler.command = ['s', 'sticker', 'stiker']
 
