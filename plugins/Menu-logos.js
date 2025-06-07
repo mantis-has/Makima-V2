@@ -1,68 +1,60 @@
-const estilosLogos = [
-  { cmd: "glitchtext",      emoji: "🟣" },
-  { cmd: "narutotext",     emoji: "🍥" },
-  { cmd: "dragonball",     emoji: "🟠" },
-  { cmd: "neonlight",      emoji: "💡" },
-  { cmd: "pubglogo",       emoji: "🔫" },
-  { cmd: "harrypotter",    emoji: "⚡" },
-  { cmd: "marvel",         emoji: "🦸" },
-  { cmd: "pixelglitch",    emoji: "🔳" },
-  { cmd: "amongustext",    emoji: "👾" },
-  { cmd: "writetext",      emoji: "✍️" },
-  { cmd: "advancedglow",   emoji: "🌟" },
-  { cmd: "typographytext", emoji: "📝" },
-  { cmd: "neonglitch",     emoji: "🌈" },
-  { cmd: "flagtext",       emoji: "🏳️" },
-  { cmd: "flag3dtext",     emoji: "🏁" },
-  { cmd: "deletingtext",   emoji: "❌" },
-  { cmd: "blackpinkstyle", emoji: "💖" },
-  { cmd: "glowingtext",    emoji: "✨" },
-  { cmd: "underwatertext", emoji: "🌊" },
-  { cmd: "logomaker",      emoji: "🖌️" },
-  { cmd: "cartoonstyle",   emoji: "🎨" },
-  { cmd: "papercutstyle",  emoji: "✂️" },
-  { cmd: "watercolortext", emoji: "🖍️" },
-  { cmd: "effectclouds",   emoji: "☁️" },
-  { cmd: "blackpinklogo",  emoji: "🌸" },
-  { cmd: "gradienttext",   emoji: "🌀" },
-  { cmd: "summerbeach",    emoji: "🏖️" },
-  { cmd: "luxurygold",     emoji: "🥇" },
-  { cmd: "multicoloredneon", emoji: "💫" },
-  { cmd: "sandsummer",     emoji: "🏝️" },
-  { cmd: "galaxywallpaper", emoji: "🪐" },
-  { cmd: "style",          emoji: "💠" },
-  { cmd: "makingneon",     emoji: "🔆" },
-  { cmd: "royaltext",      emoji: "👑" },
-  { cmd: "freecreate",     emoji: "🆓" },
-  { cmd: "galaxystyle",    emoji: "🌌" },
-  { cmd: "rainytext",      emoji: "🌧️" },
-  { cmd: "graffititext",   emoji: "🖍️" },
-  { cmd: "colorfulltext",  emoji: "🌈" },
-  { cmd: "equalizertext",  emoji: "🎚️" },
-  { cmd: "angeltxt",       emoji: "👼" },
-  { cmd: "starlight",      emoji: "🌟" },
-  { cmd: "steel",          emoji: "🔩" },
-  { cmd: "neoncity",       emoji: "🌃" },
-  { cmd: "cloudsky",       emoji: "☁️" },
-  { cmd: "matrix",         emoji: "🟩" },
-  { cmd: "minion",         emoji: "💛" },
-  { cmd: "papercut3d",     emoji: "📐" },
-  { cmd: "firetext",       emoji: "🔥" },
-  { cmd: "icecold",        emoji: "🧊" },
-  { cmd: "rainbowtext",    emoji: "🌈" }
-];
+import fs from 'fs'
+import fetch from 'node-fetch'
+import { xpRange } from '../lib/levelling.js'
+const { levelling } = '../lib/levelling.js'
+import { promises } from 'fs'
+import { join } from 'path'
+let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+try {        
+/*let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}*/
+let { exp, chocolates, level, role } = global.db.data.users[m.sender]
+let { min, xp, max } = xpRange(level, global.multiplier)
+let name = await conn.getName(m.sender)
+let _uptime = process.uptime() * 1000
+let _muptime
+if (process.send) {
+process.send('uptime')
+_muptime = await new Promise(resolve => {
+process.once('message', resolve)
+setTimeout(resolve, 1000)
+}) * 1000
+}
+let user = global.db.data.users[m.sender]
+let muptime = clockString(_muptime)
+let uptime = clockString(_uptime)
+let totalreg = Object.keys(global.db.data.users).length
+let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let mentionedJid = [who]
+let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/mqtxvp.jpg')
+let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+const vid = ['https://files.catbox.moe/falp8a.mp4', 'https://files.catbox.moe/falp8a.mp4', 'https://files.catbox.moe/falp8a.mp4']
 
-const handler = async (m, { conn, usedPrefix }) => {
-  let menuText = `*┏━━⊱  MENÚ DE LOGOS Y ESTILOS  ⊰━━┓*\n\n`;
+let menu = `╭─╮︹︹⊹︹︹⊹︹︹⊹︹︹╭─╮
+    ⚘ENVIANDO MENU...
+╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝
 
-  menuText += estilosLogos.map(e => `${e.emoji} *${usedPrefix}${e.cmd}*`).join('\n');
-  menuText += `\n\n*┗━━⊱ Usa así:* _${usedPrefix}comando tu texto_\nPor ejemplo: *${usedPrefix}glitchtext Rayo-ofc*`;
+> ${dev}`.trim()
 
-  await conn.reply(m.chat, menuText, m);
-};
+await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: '𝐌A͜͡𝑲𝑖𝐌ꪖ  𝐁o͟T͎ 𝙼𝙳', body: dev, thumbnailUrl: perfil, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
+await m.react(emojis)    
 
-handler.help = ['menulogos'];
-handler.tags = ['menu'];
-handler.command = ['menulogos', 'logosmenu', 'logostylemenu'];
+} catch (e) {
+await m.reply(`✘ No cargo la lista de comandos.\n\n${e}`)
+await m.react(error)
+}}
 
-export default handler;
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = ['menu', 'help', 'asistenciabot', 'comandos', 'listadecomandos', 'menucompleto'] 
+handler.register = true
+export default handler
+
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
+function clockString(ms) {
+let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')}
