@@ -23,7 +23,7 @@ const enviarAvisoCanal = async (conn, notifyChat = null) => {
       console.log(`❌ Error al enviar a ${jid}`);
     }
 
-    await new Promise(resolve => setTimeout(resolve, 300)); // espera entre envíos
+    await new Promise(resolve => setTimeout(resolve, 300)); 
   }
 
   let resumen = `✅ *Mensaje enviado correctamente*\n\n📨 Total: ${usuarios.length + grupos.length}\n👤 Usuarios: ${usuarios.length}\n👥 Grupos: ${grupos.length}`;
@@ -35,10 +35,10 @@ const enviarAvisoCanal = async (conn, notifyChat = null) => {
 const handler = async (m, { conn, isOwner, global }) => {
   if (!isOwner) throw '❌ Este comando es solo para el *owner*.';
 
-  // 1. Ejecutar en el bot principal
+  
   await enviarAvisoCanal(conn, m.chat);
 
-  // 2. Ejecutar en todos los subbots conectados
+  
   if (global.conns && global.conns.length > 0) {
     for (let subbot of global.conns) {
       try {
@@ -58,4 +58,4 @@ handler.command = ['canal'];
 handler.owner = true;
 
 export default handler;
-export { enviarAvisoCanal }; // exportado por si lo quieres usar en el arranque automático
+export { enviarAvisoCanal }; 
