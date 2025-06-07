@@ -1,8 +1,8 @@
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-    if (!text) return conn.reply(m.chat, `${emoji} Por favor, ingrese el número al que quiere enviar una invitación al grupo.`, m);
-    if (text.includes('+')) return conn.reply(m.chat, `${emoji2} Ingrese el número todo junto sin el *+*`, m);
-    if (isNaN(text)) return conn.reply(m.chat, `${emoji2} Ingrese sólo números sin su código de país y sin espacios.`, m);
-    if (!m.isGroup) return m.reply(`${emoji2} Este comando solo funciona en grupos.`);
+    if (!text) return conn.reply(m.chat, `《✧》  Debes ingresar el número de la persona que deseas añadir al grupo.`, m);
+    if (text.includes('+')) return conn.reply(m.chat, `《✧》  Ingresa el número todo junto sin el *+*`, m);
+    if (isNaN(text)) return conn.reply(m.chat, `《✧》 Ingresa sólo números sin su código de país y sin espacios.`, m);
+    if (!m.isGroup) return m.reply(`《✧》 Esta función solo puede ser usada en grupos.`);
 
     let group = m.chat;
     let link = 'https://chat.whatsapp.com/' + await conn.groupInviteCode(group);
@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
     try {
         // Enviar la invitación con vista previa de enlace activada
-        await conn.reply(jid, `${emoji} *INVITACIÓN A GRUPO*\n\nUn usuario te invitó a unirte a este grupo \n\n${link}`, m, {
+        await conn.reply(jid, `${emoji} *INVITACIÓN AL GRUPO*\n\n🩵 Un usuario te invitó a unirte a este grupo \n\n${link}`, m, {
             mentions: [m.sender],
             linkPreview: true // Activar vista previa del enlace
         });
@@ -24,7 +24,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
 handler.help = ['invite *<521>*'];
 handler.tags = ['group'];
-handler.command = ['add', 'agregar', 'añadir'];
+handler.command = ['invitar', 'agregar', 'añadir'];
 handler.group = true;
 handler.admin = false;
 handler.botAdmin = true;
