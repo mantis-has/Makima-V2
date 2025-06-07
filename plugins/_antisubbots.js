@@ -17,7 +17,7 @@ export async function before(m, { participants, conn }) {
 
           if (isBotPresent) {
                 setTimeout(async () => {
-                    await conn.reply(m.chat, `╭━〔 ⚔ 𝐊𝐈𝐑𝐈𝐓𝐎-𝐁𝐎𝐓 ⚔ 〕━╮\n┃ En este grupo ya está el bot principal.\n┃ Me retiraré para evitar spam.\n╰━━━━━━━━━━━━━━━━━━━╯`, m, rcanal);
+                    await conn.reply(m.chat, `「SOY PREM-BOT」\n\n• Devido a eso, saldre de este grupo porque aqui está el bot Oficial.`, m, rcanal);
                     await this.groupLeave(m.chat)
                 }, 5000)// 5 segundos
             }
