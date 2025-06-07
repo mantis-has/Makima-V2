@@ -1,5 +1,5 @@
 {
-"name": "kirito-Bot-MD",
+"name": "Makima-Bot-2.0",
 "version": "2.2.0",
 "description": "WhatsApp Bot Multi Device ",
 "main": "index.js",
@@ -18,20 +18,20 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/deylin-eliac/Kirito-Bot-MD",
+"homepage": "https://github.com/mantis-has/Makima",
 "author": {
-"name": "Deylin+G"
+"name": "Félix-G"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/deylin-eliac/Kirito-Bot-MD.git"
+"url": "git+https://github.com/mantis-has/Makima-V2.git"
 },
 "bugs": {
-"url": "https://github.com/deylin-eliac/Kirito-Bot-MD/issues"
+"url": "https://github.com/mantis-has/Makima-V2/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
-"@whiskeysockets/baileys": "github:deylin-eliac/Baileys",
+"@whiskeysockets/baileys": "github:ds6/meta",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@bochilteam/scraper-sosmed": "^1.0.5",
