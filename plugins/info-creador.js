@@ -1,53 +1,39 @@
-// Código creado por Deylin
-// https://github.com/deylinqff
-// No quites créditos
+let handler = async (m, { conn, command, usedPrefix }) => {
+let creadorID = '18293142989@s.whatsapp.net'
+let isInGroup = m.isGroup && (await conn.groupMetadata(m.chat)).participants.some(p => p.id === creadorID)
 
-import PhoneNumber from 'awesome-phonenumber';
+let numeroTexto = isInGroup ? `@${creadorID.split('@')[0]}` : `+1 829 314 2989`
 
-async function handler(m, { conn }) {
-  m.react('👑');
-  const numCreador = '50433191934';
-  const ownerJid = numCreador + '@s.whatsapp.net';
+let creador = `🩵 *C R E A D O R🩵*
 
-  const name = await conn.getName(ownerJid) || 'Deylin';
-  const about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || `Hola, mucho gusto. Soy Deylin.
-Soy desarrollador de software y sitios web, apasionado por la tecnología, el diseño funcional y la innovación digital.
+Nombre: Félix Manuel 
+Club: Deymoon Club 
+Info: Makima 2.0 Bot, es un bot con muchos comandos.`
 
-Cada día me esfuerzo por aprender algo nuevo, mejorar mis habilidades y ofrecer soluciones eficientes y creativas a quienes confían en mi trabajo`;
-  const empresa = 'Deylin - Servicios Tecnológicos';
+await conn.sendMessage(m.chat, {
+  text: creador.trim(),
+  contextInfo: {
+    forwardingScore: 200,
+    isForwarded: false,
+    mentionedJid: isInGroup ? [creadorID] : [],
+    externalAdReply: {
+      showAdAttribution: true,
+      renderLargerThumbnail: true,
+      title: `DEYMOON CLUB OFC`,
+      body: packname,
+      mediaType: 1,
+      sourceUrl: redes,
+      thumbnailUrl: imagen1
+    }
+  }
+}, {
+  quoted: fkontak
+})
 
-
-  const vcard = `
-BEGIN:VCARD
-VERSION:3.0
-N:;${name};;;
-FN:${name}
-ORG:${empresa};
-TITLE:CEO & Fundador
-TEL;waid=${numCreador}:${new PhoneNumber('+' + numCreador).getNumber('international')}
-EMAIL:correo@empresa.com
-URL:https://www.tuempresa.com
-NOTE:${about}
-ADR:;;Dirección de tu empresa;;;;
-X-ABADR:ES
-X-ABLabel:Dirección Web
-X-ABLabel:Correo Electrónico
-X-ABLabel:Teléfono de contacto
-X-WA-BIZ-NAME:${name}
-X-WA-BIZ-DESCRIPTION:${about}
-END:VCARD
-  `.trim();
-
-
-  await conn.sendMessage(
-    m.chat,
-    { contacts: { displayName: name, contacts: [{ vcard }] } },
-    { quoted: fkontak }
-  );
 }
+handler.help = ['creador']
+handler.command = ['creador', 'creator', 'owner', 'propietario', 'dueño']
+handler.register = true
+handler.tags = ['main']
 
-handler.help = ['owner'];
-handler.tags = ['main'];
-handler.command = ['owner', 'creator', 'creador', 'dueño'];
-
-export default handler;
+export default handler
